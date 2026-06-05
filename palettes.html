@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DREAM — Palette Studies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: #08080c;
+    color: #e8e8f0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 4rem 2rem 6rem;
+  }
+  .gallery-head { max-width: 1180px; margin: 0 auto 3rem; }
+  .gallery-head .kicker {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #6ee7b7; margin-bottom: 0.9rem;
+  }
+  .gallery-head h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; line-height: 1.1; }
+  .gallery-head h1 em { font-style: italic; color: #fbbf24; }
+  .gallery-head p { color: #8888a0; max-width: 640px; margin-top: 1rem; font-size: 0.95rem; }
+  .gallery-head code { font-family: var(--mono); font-size: 0.82rem; color: #c9c9da; background: #16161f; padding: 0.1rem 0.4rem; border-radius: 4px; }
+
+  .grid {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem;
+  }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+
+  .panel {
+    border: 1px solid #23232e; border-radius: 16px; overflow: hidden;
+    background: #0d0d13;
+    opacity: 0; transform: translateY(18px);
+    animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .panel-head { padding: 1.1rem 1.3rem; border-bottom: 1px solid #23232e; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .panel-head .pname { font-family: var(--serif); font-size: 1.15rem; }
+  .panel-head .pconcept { font-size: 0.78rem; color: #7a7a92; text-align: right; max-width: 55%; }
+  .panel-head .ptone { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #555568; display: block; margin-top: 0.15rem; }
+
+  /* ---- themed mock (consumes palette vars set inline) ---- */
+  .mock {
+    background:
+      radial-gradient(ellipse at 30% 0%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 55%),
+      var(--bg);
+    color: var(--text);
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+  .mock .badge {
+    display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    padding: 0.3rem 0.8rem; border-radius: 100px; margin-bottom: 1rem;
+  }
+  .mock h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.12; margin-bottom: 0.5rem; }
+  .mock h2 em { font-style: italic; color: var(--accent); }
+  .mock .lede { font-size: 0.84rem; color: var(--text-dim); margin-bottom: 1.2rem; }
+  .mock .label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+
+  .mock .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 0.9rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .mock .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .mock .card .nm { font-weight: 600; font-size: 0.86rem; }
+  .mock .card .af { font-size: 0.74rem; color: var(--accent-dim); margin-bottom: 0.35rem; }
+  .mock .card .ds { font-size: 0.76rem; color: var(--text-dim); line-height: 1.5; }
+  .mock .card .tg { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.05em; color: var(--text-muted); border: 1px solid var(--border); padding: 0.12rem 0.45rem; border-radius: 4px; margin-top: 0.5rem; }
+
+  .mock .row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .mock .date { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.76rem; color: var(--text-dim); }
+  .mock .date b { font-family: var(--mono); font-weight: 500; color: var(--warm); }
+  .mock .link { font-size: 0.78rem; color: var(--accent-dim); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-bottom: 1px; }
+  .mock .link:hover { color: var(--accent); }
+
+  /* ---- swatches ---- */
+  .swatches { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid #23232e; }
+  .sw { flex: 1 1 12.5%; min-width: 0; padding: 0.6rem 0.5rem 0.7rem; }
+  .sw .chip { height: 30px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.4rem; }
+  .sw .role { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.04em; color: #7a7a92; text-transform: uppercase; }
+  .sw .hex { font-family: var(--mono); font-size: 0.58rem; color: #b8b8cc; }
+
+  footer { max-width: 1180px; margin: 3rem auto 0; color: #555568; font-size: 0.8rem; }
+  footer code { font-family: var(--mono); color: #8888a0; }
+</style>
+</head>
+<body>
+
+<div class="gallery-head">
+  <div class="kicker">Palette Studies · DREAM @ NeurIPS 2026</div>
+  <h1>Sunny Sydney, <em>serious</em> disease</h1>
+  <p>Four ways to resolve the tension. The shared principle: a calm clinical/biological color carries the page (gravity + life); Sydney's warmth appears as a deliberate <em style="color:#fbbf24;font-style:normal">spark</em> — a date, a hover, a glint — never the whole canvas. Each panel applies a full palette to real workshop content. Variables map 1:1 onto <code>index.html</code>'s <code>:root</code>.</p>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>Tell me which to apply — or mix (e.g. “D's base with B's spark”). I'll drop the chosen set into <code>:root</code> and adjust the hero gradient + nav blur to match.</p>
+</footer>
+
+<script>
+const palettes = [
+  {
+    name: 'A · Clinical Dawn',
+    tone: 'current — refined',
+    concept: 'Ink base, emerald life, amber sun. Green reads biology / clinical / hope.',
+    vars: { bg:'#0a0a0f', bgSurface:'#111118', bgCard:'#16161f', border:'#2a2a3a',
+            text:'#e8e8f0', textDim:'#8888a0', textMuted:'#555568',
+            accent:'#6ee7b7', accentDim:'#34d399', warm:'#fbbf24' }
+  },
+  {
+    name: 'B · Harbour',
+    tone: 'cooler — clinical',
+    concept: 'Deep blue-ink and teal — harbour water, medical calm — with a gold glint of sun.',
+    vars: { bg:'#07090d', bgSurface:'#0c1117', bgCard:'#111824', border:'#243240',
+            text:'#e6edf3', textDim:'#7d93a8', textMuted:'#48586a',
+            accent:'#2dd4bf', accentDim:'#14b8a6', warm:'#fcc419' }
+  },
+  {
+    name: 'C · Bone & Ink',
+    tone: 'light — editorial',
+    concept: 'Compromise by value, not hue: a sunlit bone page, deep clinical-teal ink, a terracotta ember.',
+    vars: { bg:'#f4efe6', bgSurface:'#ece4d6', bgCard:'#fbf8f1', border:'#ddd2bf',
+            text:'#1a2420', textDim:'#5d665f', textMuted:'#9a9286',
+            accent:'#0f766e', accentDim:'#115e59', warm:'#c2410c' }
+  },
+  {
+    name: 'D · Eucalyptus & Ochre',
+    tone: 'earth — grounded',
+    concept: 'Warm-charcoal base, muted eucalyptus green, ochre earth. Honours place; warm yet grave.',
+    vars: { bg:'#0f0e0a', bgSurface:'#16140e', bgCard:'#1c1a12', border:'#37331f',
+            text:'#ece7d6', textDim:'#a39d86', textMuted:'#6b6550',
+            accent:'#94b073', accentDim:'#7e9963', warm:'#cd7f32' }
+  }
+];
+
+const swOrder = [
+  ['bg','BG'], ['bgSurface','Surface'], ['bgCard','Card'], ['border','Border'],
+  ['text','Text'], ['accent','Accent'], ['accentDim','Accent·dim'], ['warm','Warm']
+];
+
+const grid = document.getElementById('grid');
+
+palettes.forEach((p, i) => {
+  const v = p.vars;
+  const varStyle = `--bg:${v.bg};--bg-surface:${v.bgSurface};--bg-card:${v.bgCard};--border:${v.border};--text:${v.text};--text-dim:${v.textDim};--text-muted:${v.textMuted};--accent:${v.accent};--accent-dim:${v.accentDim};--warm:${v.warm}`;
+
+  const swatches = swOrder.map(([k, lbl]) => `
+    <div class="sw">
+      <div class="chip" style="background:${v[k]}"></div>
+      <div class="role">${lbl}</div>
+      <div class="hex">${v[k]}</div>
+    </div>`).join('');
+
+  const panel = document.createElement('article');
+  panel.className = 'panel';
+  panel.style.animationDelay = (i * 0.09) + 's';
+  panel.innerHTML = `
+    <div class="panel-head">
+      <div>
+        <div class="pname">${p.name}</div>
+        <span class="ptone">${p.tone}</span>
+      </div>
+      <div class="pconcept">${p.concept}</div>
+    </div>
+    <div class="mock" style="${varStyle}">
+      <div class="badge">NeurIPS 2026 Workshop</div>
+      <h2>Disease Reasoning,<br>Experimentation, And <em>Modeling</em></h2>
+      <p class="lede">Building AI scientists that construct, simulate, and revise mechanistic models of disease.</p>
+      <div class="label">03 — Speakers</div>
+      <div class="card">
+        <div class="nm">Christine Chaffer</div>
+        <div class="af">Garvan Institute</div>
+        <div class="ds">Cancer cell-state plasticity and tumour heterogeneity; a wet-lab view on therapy resistance.</div>
+        <span class="tg">Academia</span>
+      </div>
+      <div class="row">
+        <div class="date">Submission deadline <b>Aug 29, 2026</b></div>
+        <a class="link" href="#">Call for Papers →</a>
+      </div>
+    </div>
+    <div class="swatches" style="${varStyle}">${swatches}</div>`;
+  grid.appendChild(panel);
+});
+</script>
+
+</body>
+</html>
