@@ -303,7 +303,7 @@ footer a:hover { color: var(--accent); }
 <section class="hero">
   <div class="hero-badge">NeurIPS 2026 Workshop</div>
   <h1>Disease Reasoning,<br>Experimentation, And <em>Modeling</em></h1>
-  <p class="hero-sub">Scope and call for papers in development — proposal circulating now.</p>
+  <p class="hero-sub">Building AI scientists that construct, simulate, and revise mechanistic models of disease.</p>
   <div class="hero-ascii-wrap">
     <canvas id="hero-ascii"></canvas>
   </div>
@@ -318,13 +318,19 @@ footer a:hover { color: var(--accent); }
 <section id="about">
   <div class="container">
     <div class="section-label">01 — About</div>
-    <h2 class="section-title">Scope <em>in development</em></h2>
+    <h2 class="section-title">AI scientists for <em>disease</em></h2>
     <p class="about-text">
-      <strong>DREAM</strong> — Disease Reasoning, Experimentation, And Modeling — is a NeurIPS 2026 workshop currently being scoped around AI systems that reason about disease: forming mechanistic hypotheses, designing experiments to test them, and revising models in light of new data.
+      AI in disease biology has largely been the domain of classification models. With agentic AI and virtual modeling, we can now ask a different question: <strong>how do we build AI scientists that construct, simulate, and revise mechanistic models of disease?</strong>
     </p>
     <p class="about-text">
-      A detailed scope, topic list, and call for papers are being finalized with the organizing committee. This page will be updated as the proposal is circulated and confirmed.
+      The next generation of AI scientists should infer generative models of complex systems — <em>virtual cells, virtual brains, virtual organisms</em> — whose behaviour can be simulated, perturbed, and interrogated. These models encode explicit hypotheses about how components interact and evolve, forming a closed loop: <strong>model → prediction → experiment → model revision</strong>. <strong>DREAM</strong> brings together the methods needed to close that loop and the disease-biology domains where they must operate.
     </p>
+    <div class="topics-grid">
+      <div class="topic-chip">Generative modeling — neural ODEs/SDEs, flow matching</div>
+      <div class="topic-chip">Geometric &amp; topological deep learning</div>
+      <div class="topic-chip">AI agents &amp; foundation models for scientific reasoning</div>
+      <div class="topic-chip">Lab-in-the-loop experimental design</div>
+    </div>
   </div>
 </section>
 
@@ -356,7 +362,69 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="section-label">03 — Speakers</div>
     <h2 class="section-title">Invited <em>speakers</em></h2>
-    <p class="section-desc">Speaker lineup TBA. Invitations will go out once the scope is finalized.</p>
+    <p class="section-desc">Nine confirmed speakers spanning machine-learning methodology and disease biology, across academia and industry.</p>
+
+    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 0.5rem 0 1rem;">AI scientists &amp; model construction</h3>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <div class="speaker-name">Yutaro Yamada</div>
+        <div class="speaker-affil">Sakana AI</div>
+        <div class="speaker-desc">LLM agents and automated scientific discovery; a lead author of <em>The AI Scientist</em>.</div>
+        <span class="speaker-tag">Industry</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Charlotte Bunne</div>
+        <div class="speaker-affil">EPFL</div>
+        <div class="speaker-desc">Generative models for cellular dynamics; co-author of the virtual-cell roadmap.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Dhananjay Bhaskar</div>
+        <div class="speaker-affil">UW–Madison</div>
+        <div class="speaker-desc">Geometric and topological methods for dynamical systems in biology.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Lazar Atanackovic</div>
+        <div class="speaker-affil">U of Alberta</div>
+        <div class="speaker-desc">Gene-regulatory and cellular-dynamics inference for natural systems.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--serif); font-size: 1.25rem; margin: 2.5rem 0 1rem;">Disease dynamics &amp; lab-in-the-loop</h3>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <div class="speaker-name">Christine Chaffer</div>
+        <div class="speaker-affil">Garvan Institute</div>
+        <div class="speaker-desc">Cancer cell-state plasticity and tumour heterogeneity; a wet-lab view on therapy resistance.</div>
+        <span class="speaker-tag">Institute</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">John Lock</div>
+        <div class="speaker-affil">UNSW</div>
+        <div class="speaker-desc">Quantitative cell biology and image-based phenotyping at scale.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Jake Taylor-King</div>
+        <div class="speaker-affil">Relation Therapeutics</div>
+        <div class="speaker-desc">AI for drug development and closed-loop discovery pipelines.</div>
+        <span class="speaker-tag">Industry</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Christian Ledig</div>
+        <div class="speaker-affil">U of Bamberg</div>
+        <div class="speaker-desc">Explainable ML for health; clinical translation and interpretability.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Maria Brbić</div>
+        <div class="speaker-affil">EPFL</div>
+        <div class="speaker-desc">Foundation models and ML methods for real-world single-cell biology.</div>
+        <span class="speaker-tag">Academia</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -369,19 +437,19 @@ footer a:hover { color: var(--accent); }
 
     <div class="cfp-tracks">
       <div class="track-card">
-        <h4>Full Papers</h4>
-        <div class="pages">4–8 pages</div>
-        <p>Original research contributions with methods, experiments, and comparisons. Top papers selected for spotlight talks and awards.</p>
+        <h4>Research Papers</h4>
+        <div class="pages">4 pages</div>
+        <p>Original methodological and applied contributions. Top-ranked papers are selected for contributed spotlight talks and compete for best-paper awards.</p>
       </div>
       <div class="track-card">
-        <h4>Extended Abstracts</h4>
+        <h4>Open Problems</h4>
         <div class="pages">4 pages</div>
-        <p>Work-in-progress results, preliminary findings, or position papers framing new directions.</p>
+        <p>Concrete disease-modeling challenges for the ML community to tackle — surfacing the bottlenecks clinicians and biologists face, and high-impact real-world problems for ML researchers.</p>
       </div>
       <div class="track-card">
         <h4>Tiny Papers</h4>
         <div class="pages">1–2 pages</div>
-        <p>Novel methodological ideas or approaches to biological problems. Designed to encourage participation from under-represented communities. Lack of results is not grounds for rejection.</p>
+        <p>Novel methodological ideas or approaches to biological problems. Designed to lower the barrier for first-time contributors, clinicians, and biologists. Lack of results is not grounds for rejection.</p>
       </div>
     </div>
 
@@ -405,7 +473,7 @@ footer a:hover { color: var(--accent); }
     </div>
 
     <p class="cfp-details">
-      All submissions are <strong>non-archival</strong> and will be reviewed by the program committee. We expect ~100 submissions and will accommodate up to <strong>80 posters</strong>. The top-ranked full papers and best extended abstract will be selected for <strong>contributed spotlight talks</strong>. Full papers also compete for <strong>best paper awards</strong>.
+      All submissions are <strong>non-archival</strong> and will be reviewed by the program committee. We expect <strong>100–150 submissions</strong> and will accommodate up to <strong>80 posters</strong>. Top-ranked submissions across all tracks are selected for <strong>contributed spotlight talks</strong>, and research papers compete for <strong>best-paper awards</strong>.
     </p>
   </div>
 </section>
@@ -415,7 +483,7 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <div class="section-label">05 — People</div>
     <h2 class="section-title"><em>Organizers</em></h2>
-    <p class="section-desc">Our committee spans institutions across North America and Europe, multiple career stages, and diverse backgrounds.</p>
+    <p class="section-desc">Our committee spans institutions across three continents — North America, Europe, and Australia — multiple career stages, and diverse backgrounds.</p>
 
     <div class="org-grid">
       <div class="org-card">
@@ -429,8 +497,8 @@ footer a:hover { color: var(--accent); }
         <div class="org-role">Co-organizer</div>
       </div>
       <div class="org-card">
-        <div class="org-name">Jungyoon Lee</div>
-        <div class="org-affil">Mila & U de Montréal</div>
+        <div class="org-name">Shabarni Gupta</div>
+        <div class="org-affil">Garvan Institute</div>
         <div class="org-role">Co-organizer</div>
       </div>
       <div class="org-card">
@@ -444,8 +512,8 @@ footer a:hover { color: var(--accent); }
         <div class="org-role">Co-organizer</div>
       </div>
       <div class="org-card">
-        <div class="org-name">Rex Ying</div>
-        <div class="org-affil">Yale University</div>
+        <div class="org-name">Benjamin Kile</div>
+        <div class="org-affil">Garvan Institute</div>
         <div class="org-role">Co-organizer</div>
       </div>
       <div class="org-card">
@@ -457,18 +525,6 @@ footer a:hover { color: var(--accent); }
         <div class="org-name">Smita Krishnaswamy</div>
         <div class="org-affil">Yale University</div>
         <div class="org-role">Co-organizer</div>
-      </div>
-    </div>
-
-    <h3 style="font-family: var(--serif); font-size: 1.3rem; margin-top: 3rem; margin-bottom: 1rem;">Steering Committee</h3>
-    <div class="org-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-      <div class="org-card">
-        <div class="org-name">Matthew Scicluna</div>
-        <div class="org-affil">Mila & U de Montréal</div>
-      </div>
-      <div class="org-card">
-        <div class="org-name">Aaron Wenteler</div>
-        <div class="org-affil">Queen Mary U of London</div>
       </div>
     </div>
   </div>
