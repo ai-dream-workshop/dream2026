@@ -13,7 +13,8 @@
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DREAM @ NeurIPS 2026</title>
+<title>DREAM 2026 — Symposium at Garvan</title>
+<meta name="description" content="DREAM: Disease Reasoning, Experimentation and Modelling. A free, one-day symposium at Garvan Institute, Sydney, on 7 December 2026. Submit abstracts by 20 November.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -37,7 +38,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font-family: var(--sans);
@@ -127,6 +128,22 @@ nav {
   color: var(--text-muted); letter-spacing: 0.04em;
 }
 .hero-meta-item strong { color: var(--text-dim); font-weight: 500; }
+.hero-meta-item a { color: var(--accent); }
+.hero-actions {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem;
+  margin: 2rem 0 1rem;
+}
+.button {
+  display: inline-block; padding: 0.75rem 1.2rem;
+  border: 1px solid var(--accent); border-radius: 6px;
+  background: var(--accent); color: var(--bg);
+  font-weight: 600; text-decoration: none;
+}
+.button-secondary { background: var(--bg-card); color: var(--accent); }
+.button:hover { filter: brightness(1.12); }
+a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+.hero-note { position: relative; z-index: 1; color: var(--text-dim); font-size: 0.85rem; }
 
 /* ---- SECTIONS ---- */
 section { padding: 5rem 2rem; }
@@ -251,10 +268,16 @@ footer a { color: var(--accent-dim); text-decoration: none; }
 footer a:hover { color: var(--accent); }
 
 /* ---- RESPONSIVE ---- */
+@media (max-width: 1000px) {
+  html { scroll-padding-top: 140px; }
+  .nav-inner { height: auto; min-height: 60px; flex-direction: column; gap: 0.4rem; padding: 0.7rem 1rem; }
+  .nav-links { flex-wrap: wrap; justify-content: center; }
+}
 @media (max-width: 768px) {
   .nav-links a { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
-  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero { padding: 11rem 1.5rem 3rem; }
   .hero-meta { flex-direction: column; gap: 0.5rem; }
+  .date-row { flex-wrap: wrap; gap: 0.3rem; }
   .schedule-item { grid-template-columns: 1fr; gap: 0.3rem; }
   .speakers-grid, .org-grid { grid-template-columns: 1fr; }
 }
@@ -288,30 +311,36 @@ footer a:hover { color: var(--accent); }
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">DREAM<span>@NeurIPS2026</span></a>
+    <a href="#" class="nav-logo">DREAM<span> 2026 · Garvan</span></a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#schedule">Schedule</a>
       <a href="#speakers">Speakers</a>
-      <a href="#cfp">Call for Papers</a>
+      <a href="#cfp">Submit abstract</a>
       <a href="#organizers">Organizers</a>
+      <a href="https://www.trybooking.com/DQTHJ">Register free</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">NeurIPS 2026 Workshop</div>
-  <h1>Disease Reasoning,<br>Experimentation, And <em>Modeling</em></h1>
+  <div class="hero-badge">Free one-day symposium · Sydney</div>
+  <h1>Disease Reasoning,<br>Experimentation, and <em>Modelling</em></h1>
   <p class="hero-sub">Building AI scientists that construct, simulate, and revise mechanistic models of disease.</p>
   <div class="hero-ascii-wrap">
     <canvas id="hero-ascii"></canvas>
   </div>
   <div class="hero-meta">
-    <div class="hero-meta-item"><strong>Where</strong>&ensp;NeurIPS 2026</div>
-    <div class="hero-meta-item"><strong>Format</strong>&ensp;Full-day, in-person</div>
-    <div class="hero-meta-item"><strong>Contact</strong>&ensp;cesar.valdez@mila.quebec</div>
+    <div class="hero-meta-item"><strong>When</strong>&ensp;Monday 7 December 2026 · 9am–5pm AEDT (UTC+11)</div>
+    <div class="hero-meta-item"><strong>Where</strong>&ensp;Garvan Institute of Medical Research<br>384 Victoria St, Darlinghurst, NSW 2010, Australia</div>
+    <div class="hero-meta-item"><strong>Contact</strong>&ensp;<a href="mailto:dream@garvan.org.au">dream@garvan.org.au</a></div>
   </div>
+  <div class="hero-actions">
+    <a class="button" href="https://www.trybooking.com/DQTHJ">Register free</a>
+    <a class="button button-secondary" href="https://forms.gle/L9x6VF7z8Hk69Yss9">Submit abstract</a>
+  </div>
+  <p class="hero-note">In person at Garvan · Abstracts due 20 November 2026</p>
 </section>
 
 <!-- ABOUT -->
@@ -338,22 +367,13 @@ footer a:hover { color: var(--accent); }
 <section id="schedule">
   <div class="container">
     <div class="section-label">02 — Schedule</div>
-    <h2 class="section-title">Full-day <em>program</em></h2>
-    <p class="section-desc">All activities in person. Virtual talks accommodated for hard constraints. Talks recorded and shared online.</p>
+    <h2 class="section-title">Provisional <em>program</em></h2>
+    <p class="section-desc">Monday 7 December 2026 · 9am–5pm AEDT (UTC+11) · In person at Garvan. The program will include the sessions below; talk order, session times, and talk lengths are being finalized.</p>
 
-    <div class="schedule-item"><div class="schedule-time">08:00 – 08:10</div><div class="schedule-content"><h4>Opening Remarks</h4><p>Theme TBA</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">08:10 – 09:20</div><div class="schedule-content"><h4>2 Foundation Talks</h4><p>35 min each · Academic</p></div></div>
-    <div class="schedule-item schedule-break"><div class="schedule-time">09:20 – 09:35</div><div class="schedule-content"><h4>Coffee break & poster setup</h4></div></div>
-    <div class="schedule-item"><div class="schedule-time">09:35 – 10:05</div><div class="schedule-content"><h4>3 Contributed Spotlights</h4><p>10 min each</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">10:05 – 11:15</div><div class="schedule-content"><h4>2 Invited Talks</h4><p>30 min each · Academic</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">11:15 – 12:15</div><div class="schedule-content"><h4>Poster Session I</h4></div></div>
-    <div class="schedule-item schedule-break"><div class="schedule-time">12:15 – 13:15</div><div class="schedule-content"><h4>Lunch</h4></div></div>
-    <div class="schedule-item"><div class="schedule-time">13:15 – 14:15</div><div class="schedule-content"><h4>2 Invited Talks</h4><p>30 min each · Industry</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">14:15 – 15:15</div><div class="schedule-content"><h4>2 Invited Talks</h4><p>30 min each · Industry</p></div></div>
-    <div class="schedule-item schedule-break"><div class="schedule-time">15:15 – 15:30</div><div class="schedule-content"><h4>Poster Session II & coffee break</h4></div></div>
-    <div class="schedule-item"><div class="schedule-time">15:30 – 16:10</div><div class="schedule-content"><h4>Panel Discussion</h4><p>Topic TBA</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">16:10 – 16:40</div><div class="schedule-content"><h4>3 Contributed Spotlights</h4><p>10 min each</p></div></div>
-    <div class="schedule-item"><div class="schedule-time">16:40 – 17:00</div><div class="schedule-content"><h4>Open Discussion & Closing</h4></div></div>
+    <div class="schedule-item"><div class="schedule-time">Welcome</div><div class="schedule-content"><h4>Opening remarks</h4><p>With Benjamin Kile and Siupeli Haukoloa-Paea, including a First Nations perspective on diversity, equity, and inclusion.</p></div></div>
+    <div class="schedule-item"><div class="schedule-time">Research talks</div><div class="schedule-content"><h4>Confirmed speakers</h4><p>Perspectives from machine learning, disease biology, and clinical research.</p></div></div>
+    <div class="schedule-item"><div class="schedule-time">Contributed work</div><div class="schedule-content"><h4>Flash talks and posters</h4><p>Share your research with the DREAM community. Submit an abstract by 20 November 2026.</p></div></div>
+    <div class="schedule-item"><div class="schedule-time">Discussion</div><div class="schedule-content"><h4>Panel and community discussion</h4><p>Disease-modelling challenges and opportunities for collaboration.</p></div></div>
   </div>
 </section>
 
@@ -361,115 +381,93 @@ footer a:hover { color: var(--accent); }
 <section id="speakers">
   <div class="container">
     <div class="section-label">03 — Speakers</div>
-    <h2 class="section-title">Invited <em>speakers</em></h2>
-    <p class="section-desc">Nine confirmed speakers spanning machine-learning methodology and disease biology, across academia and industry.</p>
+    <h2 class="section-title">Confirmed <em>speakers</em></h2>
+    <p class="section-desc">Nine confirmed speakers bringing together machine learning, disease biology, and clinical research.</p>
 
     <div class="speakers-grid">
       <div class="speaker-card">
-        <div class="speaker-name">Yutaro Yamada</div>
-        <div class="speaker-affil">Sakana AI</div>
-        <div class="speaker-desc">LLM agents and automated scientific discovery; a lead author of <em>The AI Scientist</em>.</div>
-        <span class="speaker-tag">Industry</span>
-      </div>
-      <div class="speaker-card">
-        <div class="speaker-name">Charlotte Bunne</div>
+        <div class="speaker-name">Maria Brbić</div>
         <div class="speaker-affil">EPFL</div>
-        <div class="speaker-desc">Generative models for cellular dynamics; co-author of the virtual-cell roadmap.</div>
-        <span class="speaker-tag">Academia</span>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Dhananjay Bhaskar</div>
-        <div class="speaker-affil">UW–Madison</div>
-        <div class="speaker-desc">Geometric and topological methods for dynamical systems in biology.</div>
-        <span class="speaker-tag">Academia</span>
+        <div class="speaker-name">Smita Krishnaswamy</div>
+        <div class="speaker-affil">Yale University</div>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Lazar Atanackovic</div>
-        <div class="speaker-affil">U of Alberta</div>
-        <div class="speaker-desc">Gene-regulatory and cellular-dynamics inference for natural systems.</div>
-        <span class="speaker-tag">Academia</span>
+        <div class="speaker-name">Guy Wolf</div>
+        <div class="speaker-affil">Université de Montréal / Mila</div>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Christine Chaffer</div>
-        <div class="speaker-affil">Garvan Institute</div>
-        <div class="speaker-desc">Cancer cell-state plasticity and tumour heterogeneity; a wet-lab view on therapy resistance.</div>
-        <span class="speaker-tag">Academia</span>
+        <div class="speaker-name">Angela Oliveira Pisco</div>
+        <div class="speaker-affil">Chan Zuckerberg Initiative</div>
+        <span class="speaker-tag">Confirmed speaker</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Alex Tong</div>
+        <div class="speaker-affil">AITHYRA</div>
+        <span class="speaker-tag">Confirmed speaker</span>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-name">Adrien Aumon</div>
+        <div class="speaker-affil">Université de Montréal / Mila</div>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
         <div class="speaker-name">John Lock</div>
         <div class="speaker-affil">UNSW</div>
-        <div class="speaker-desc">Quantitative cell biology and image-based phenotyping at scale.</div>
-        <span class="speaker-tag">Academia</span>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Jake Taylor-King</div>
-        <div class="speaker-affil">Relation Therapeutics</div>
-        <div class="speaker-desc">AI for drug development and closed-loop discovery pipelines.</div>
-        <span class="speaker-tag">Industry</span>
+        <div class="speaker-name">Christine Chaffer</div>
+        <div class="speaker-affil">Garvan Institute of Medical Research</div>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Christian Ledig</div>
-        <div class="speaker-affil">U of Bamberg</div>
-        <div class="speaker-desc">Explainable ML for health; clinical translation and interpretability.</div>
-        <span class="speaker-tag">Academia</span>
-      </div>
-      <div class="speaker-card">
-        <div class="speaker-name">Maria Brbić</div>
-        <div class="speaker-affil">EPFL</div>
-        <div class="speaker-desc">Foundation models and ML methods for real-world single-cell biology.</div>
-        <span class="speaker-tag">Academia</span>
+        <div class="speaker-name">Kristy Robledo</div>
+        <div class="speaker-affil">Sydney Clinical Trials Centre, University of Sydney</div>
+        <span class="speaker-tag">Confirmed speaker</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CFP -->
+<!-- ABSTRACT SUBMISSIONS -->
 <section id="cfp">
   <div class="container">
-    <div class="section-label">04 — Call for Papers</div>
-    <h2 class="section-title">Submit your <em>work</em></h2>
-    <p class="section-desc">We welcome contributions across all workshop topics. Submissions via OpenReview.</p>
+    <div class="section-label">04 — Abstract submissions</div>
+    <h2 class="section-title">Share your <em>research</em></h2>
+    <p class="section-desc">We welcome abstracts on machine learning and disease biology for flash talks and poster presentations. Submit through the abstract submission form.</p>
 
     <div class="cfp-tracks">
       <div class="track-card">
-        <h4>Research Papers</h4>
-        <div class="pages">up to 8 pages</div>
-        <p>Full-length original methodological and applied contributions. Top-ranked papers are selected for contributed spotlight talks and compete for best-paper awards.</p>
+        <h4>Flash talks</h4>
+        <p>Selected abstracts will be invited for short oral presentations to share research with the DREAM community.</p>
       </div>
       <div class="track-card">
-        <h4>Open Problems</h4>
-        <div class="pages">4 pages</div>
-        <p>Concrete disease-modeling challenges for the ML community to tackle — surfacing the bottlenecks clinicians and biologists face, and high-impact real-world problems for ML researchers.</p>
-      </div>
-      <div class="track-card">
-        <h4>Tiny Papers</h4>
-        <div class="pages">1–2 pages</div>
-        <p>Novel methodological ideas or approaches to biological problems. Designed to lower the barrier for first-time contributors, clinicians, and biologists. Lack of results is not grounds for rejection.</p>
+        <h4>Poster presentations</h4>
+        <p>Present your work and discuss disease-modelling challenges with researchers across machine learning, biology, and clinical research.</p>
       </div>
     </div>
 
     <div style="margin-bottom: 2rem;">
       <div class="date-row">
-        <span class="date-label">Submission deadline</span>
-        <span class="date-value">TBA</span>
+        <span class="date-label">Abstract deadline</span>
+        <span class="date-value"><time datetime="2026-11-20">20 November 2026</time></span>
       </div>
       <div class="date-row">
-        <span class="date-label">Author notification</span>
-        <span class="date-value">TBA</span>
-      </div>
-      <div class="date-row">
-        <span class="date-label">Camera-ready deadline</span>
-        <span class="date-value">TBA</span>
-      </div>
-      <div class="date-row">
-        <span class="date-label">Workshop date</span>
-        <span class="date-value">TBA · NeurIPS 2026</span>
+        <span class="date-label">Symposium date</span>
+        <span class="date-value"><time datetime="2026-12-07">7 December 2026</time> · 9am–5pm AEDT</span>
       </div>
     </div>
 
-    <p class="cfp-details">
-      All submissions are <strong>non-archival</strong> and will be reviewed by the program committee. We expect <strong>100–150 submissions</strong> and will accommodate up to <strong>80 posters</strong>. Top-ranked submissions across all tracks are selected for <strong>contributed spotlight talks</strong>, and research papers compete for <strong>best-paper awards</strong>.
-    </p>
+    <p class="cfp-details">Prizes will be awarded for the <strong>best oral and poster presentations</strong>.</p>
+    <div class="hero-actions" style="justify-content: flex-start;">
+      <a class="button" href="https://forms.gle/L9x6VF7z8Hk69Yss9">Submit abstract</a>
+      <a class="button button-secondary" href="https://www.trybooking.com/DQTHJ">Register free</a>
+    </div>
   </div>
 </section>
 
@@ -527,7 +525,7 @@ footer a:hover { color: var(--accent); }
 
 <!-- FOOTER -->
 <footer>
-  <p>DREAM @ NeurIPS 2026 · <a href="mailto:cesar.valdez@mila.quebec">cesar.valdez@mila.quebec</a></p>
+  <p>DREAM 2026 · Garvan Institute, Sydney · <a href="mailto:dream@garvan.org.au">dream@garvan.org.au</a></p>
   <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted);">Built with care at Mila, Yale, Imperial, Oxford & beyond</p>
 </footer>
 
