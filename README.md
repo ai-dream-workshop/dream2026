@@ -8,9 +8,9 @@ Website for **DREAM — Disease Reasoning, Experimentation and Modelling**, a fr
 - **Submit an abstract:** https://forms.gle/L9x6VF7z8Hk69Yss9 — deadline 20 November 2026.
 - **Contact:** dream@garvan.org.au
 
-Live site: https://ai-dream-workshop.github.io/neurips2026/
+Live site: https://ai-dream-workshop.github.io/dream2026/
 
-DREAM is an independent event at Garvan. The existing `neurips2026` URL is retained because it is linked from event publicity.
+DREAM is an independent event at Garvan. The repository was renamed from `neurips2026` to `dream2026`; the old `neurips2026` Pages URL no longer works.
 
 ## Development
 
