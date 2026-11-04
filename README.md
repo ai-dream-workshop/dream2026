@@ -10,17 +10,17 @@ Website for **DREAM — Disease Reasoning, Experimentation and Modelling**, a fr
 
 Live site: https://ai-dream-workshop.github.io/dream2026/
 
-DREAM is an independent event at Garvan. The repository was renamed from `neurips2026` to `dream2026`; the old `neurips2026` Pages URL no longer works.
+DREAM is an independent event at Garvan.
 
 ## Development
 
 Single-file static site (`index.html`) hosted on GitHub Pages. No build step or dependencies are required. Preview locally with:
 
 ```sh
-python3 -m http.server 8000 --directory neurips2026
+python3 -m http.server 8000
 ```
 
-Run this command from the parent `dream_website` directory, then open http://localhost:8000. If your terminal is already in this repository, use `python3 -m http.server 8000` instead.
+Run this command from the repository root, then open http://localhost:8000.
 
 ## Content still to finalize
 
