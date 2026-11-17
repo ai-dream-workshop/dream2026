@@ -259,7 +259,22 @@ section { padding: 5rem 2rem; }
 .org-name a:hover { color: var(--accent); text-decoration: underline; }
 .org-affil { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 0.3rem; }
 .org-role { font-family: var(--mono); font-size: 0.65rem; color: var(--accent-dim); letter-spacing: 0.04em; }
-
+  
+/* ---- SPONSORS ---- */
+#sponsors { background: var(--bg-surface); border-top: 1px solid var(--border); }
+.sponsor-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.sponsor-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.2rem 1.5rem; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s;
+}
+.sponsor-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+.sponsor-card img { max-width: 100%; max-height: 70px; object-fit: contain; }
+  
 /* ---- FOOTER ---- */
 footer {
   border-top: 1px solid var(--border);
@@ -320,6 +335,7 @@ footer a:hover { color: var(--accent); }
       <a href="#speakers">Speakers</a>
       <a href="#cfp">Submit abstract</a>
       <a href="#organizers">Organizers</a>
+      <a href="#sponsors">Sponsors</a>
       <a href="https://www.trybooking.com/DQTHJ">Register free</a>
     </div>
   </div>
@@ -342,7 +358,7 @@ footer a:hover { color: var(--accent); }
     <a class="button" href="https://www.trybooking.com/DQTHJ">Register free</a>
     <a class="button button-secondary" href="https://forms.gle/L9x6VF7z8Hk69Yss9">Submit abstract</a>
   </div>
-  <p class="hero-note">In person at Garvan · Abstracts due 20 November 2026</p>
+  <p class="hero-note">In person at Garvan · Abstracts due 25 November 2026</p>
 </section>
 
 <!-- ABOUT -->
@@ -428,8 +444,8 @@ footer a:hover { color: var(--accent); }
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Kristy Robledo</div>
-        <div class="speaker-affil">Sydney Clinical Trials Centre, University of Sydney</div>
+        <div class="speaker-name">Lazar Atanackovic</div>
+        <div class="speaker-affil">University of Alberta</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
     </div>
@@ -457,7 +473,7 @@ footer a:hover { color: var(--accent); }
     <div style="margin-bottom: 2rem;">
       <div class="date-row">
         <span class="date-label">Abstract deadline</span>
-        <span class="date-value"><time datetime="2026-11-20">20 November 2026</time></span>
+        <span class="date-value"><time datetime="2026-11-20">25 November 2026</time></span>
       </div>
       <div class="date-row">
         <span class="date-label">Symposium date</span>
@@ -534,7 +550,26 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 </section>
+  <!-- SPONSORS -->
+<section id="sponsors">
+  <div class="container">
+    <div class="section-label">06 — Support</div>
+    <h2 class="section-title">Supported <em>by</em></h2>
+    <p class="section-desc">DREAM 2026 is made possible by the generous support of our sponsors and partners.</p>
 
+    <div class="sponsor-grid">
+      <a class="sponsor-card" href="https://nbcf.org.au" target="_blank" rel="noopener">
+        <img src="assets/logos/nbcf-logo-yoast.webp" alt="National Breast Cancer Foundation">
+      </a>
+      <a class="sponsor-card" href="#" onclick="return false;">
+        <ast Cancer Found>
+      </a>
+      <a class="sponsor-card" href="https://www.garvan.org.au" target="_blank" rel="noopener">
+        <img src="assets/logos/Garvan_Institute_of_Medical_Research.png" alt="Garvan Institute of Medical Research">
+      </a>
+    </div>
+  </div>
+</section>
 <!-- FOOTER -->
 <footer>
   <p>DREAM 2026 · Garvan Institute, Sydney · <a href="mailto:dream@garvan.org.au">dream@garvan.org.au</a></p>
@@ -544,7 +579,7 @@ footer a:hover { color: var(--accent); }
 <!-- SCROLL ANIMATIONS -->
 <script>
 // Intersection Observer for fade-in
-document.querySelectorAll('.speaker-card, .track-card, .org-card, .topic-chip').forEach(el => {
+document.querySelectorAll('.speaker-card, .track-card, .org-card, .topic-chip, .sponsor-card').forEach(el => {
   el.classList.add('fade-in');
 });
 const observer = new IntersectionObserver((entries) => {
