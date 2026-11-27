@@ -203,6 +203,7 @@ section { padding: 5rem 2rem; }
 .speakers-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 .speaker-card {
   background: var(--bg-card); border: 1px solid var(--border);
@@ -212,13 +213,35 @@ section { padding: 5rem 2rem; }
 .speaker-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
 .speaker-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
 .speaker-affil { font-size: 0.8rem; color: var(--accent-dim); margin-bottom: 0.5rem; }
-.speaker-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; }
+.speaker-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; font-style: italic; }
 .speaker-tag {
   display: inline-block; font-family: var(--mono); font-size: 0.65rem;
   color: var(--text-muted); border: 1px solid var(--border);
   padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.6rem;
   letter-spacing: 0.04em;
 }
+/* Abstract: collapsed by default; when opened, the card widens to the full row so the text is easy to read */
+.speaker-card:has(.speaker-abstract[open]) { grid-column: 1 / -1; transform: none; }
+.speaker-abstract { margin-top: 0.7rem; }
+.speaker-abstract summary {
+  cursor: pointer; list-style: none;
+  font-size: 0.78rem; font-weight: 500; color: var(--accent);
+}
+.speaker-abstract summary::-webkit-details-marker { display: none; }
+.speaker-abstract summary::before { content: '+ '; }
+.speaker-abstract[open] summary::before { content: '− '; }
+.speaker-abstract summary:hover { text-decoration: underline; }
+.speaker-abstract summary:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; border-radius: 2px; }
+.speaker-abstract-body {
+  margin-top: 0.8rem; padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  max-width: 70ch;
+}
+.speaker-abstract-body p {
+  font-size: 0.85rem; color: var(--text-dim); line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+.speaker-abstract-body p:last-child { margin-bottom: 0; }
 
 /* ---- CFP ---- */
 #cfp { background: var(--bg-surface); border-top: 1px solid var(--border); }
@@ -402,10 +425,22 @@ footer a:hover { color: var(--accent); }
     <h2 class="section-title">Confirmed <em>speakers</em></h2>
     <p class="section-desc">Nine confirmed speakers bringing together machine learning, disease biology, and clinical research.</p>
 
+    <!--
+      Each card: name → affiliation → talk title (speaker-desc) → abstract (optional) → tag.
+      To add an abstract, paste this block under the talk title and put each paragraph in its own <p>:
+
+      <details class="speaker-abstract">
+        <summary>Read abstract</summary>
+        <div class="speaker-abstract-body">
+          <p>First paragraph…</p>
+        </div>
+      </details>
+    -->
     <div class="speakers-grid">
       <div class="speaker-card">
         <div class="speaker-name">Maria Brbić</div>
         <div class="speaker-affil">EPFL</div>
+        <div class="speaker-desc">Multimodal Modeling for Decoding Cellular States</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
@@ -416,11 +451,20 @@ footer a:hover { color: var(--accent); }
       <div class="speaker-card">
         <div class="speaker-name">Guy Wolf</div>
         <div class="speaker-affil">Université de Montréal / Mila</div>
+        <div class="speaker-desc">The elimination of the unnecessary, through guided representation learning for data exploration</div>
+        <details class="speaker-abstract">
+          <summary>Read abstract</summary>
+          <div class="speaker-abstract-body">
+            <p>In the late 19th century, the art world has radically changed, following the invention of photography and the birth of modernist movements, and entering into the age of abstraction in the early 20th century. Artists were no longer tasked with capturing or imitating reality, but rather transitioned to provide visual metaphors as interpreters, expressing ideas, and evoking emotional or intellectual response from spectators. Nowadays, data science is similarly transitioning, with modern challenges in data exploration giving rise to representation learning techniques that shift from intricate modeling of observed data distributions, which are typically biased by data availability and collection artifacts, to capturing intrinsic data geometry. These tools allow their users to navigate increasingly-prevalent big high dimensional data, going beyond scalable replication of existing knowledge, to target the curation and discovery of hidden patterns, structures, and dynamics in collected data.</p>
+            <p>A common approach in this area, which I discuss in this talk, is the construction of a data-driven diffusion geometry that captures intrinsic structure in data in the form of a statistical manifold, modeled with interdisciplinary tools originating from harmonic analysis and information geometry. However, most methods following this paradigm rely on unsupervised learning, under the assumption that the target phenomena of interest will form the dominant emergent patterns in the data, uncovered by the extracted representation. While this is the case in certain controlled-experiment conditions, such property cannot be guaranteed in many observational settings. As an alternative, here we will discuss semi-supervised approaches that leverage annotations and meta information that often accompany collected data, in order to guide the data geometry to accentuate task-informed structures in the learned representation. This approach will be demonstrated in biomedical data exploration tasks, with emphasis on dimensionality reduction for visualization.</p>
+          </div>
+        </details>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
         <div class="speaker-name">Angela Oliveira Pisco</div>
         <div class="speaker-affil">Chan Zuckerberg Initiative</div>
+        <div class="speaker-desc">Building AI/ML-Ready Multimodal Data Resources at Scale</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
@@ -431,21 +475,32 @@ footer a:hover { color: var(--accent); }
       <div class="speaker-card">
         <div class="speaker-name">Adrien Aumon</div>
         <div class="speaker-affil">Université de Montréal / Mila</div>
+        <div class="speaker-desc">Integrating multimodal datasets with shared biological knowledge</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
         <div class="speaker-name">John Lock</div>
         <div class="speaker-affil">UNSW</div>
+        <div class="speaker-desc">Mapping cell state and signalling dynamics using imaging-based systems biology data</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
-        <div class="speaker-name">Christine Chaffer</div>
-        <div class="speaker-affil">Garvan Institute of Medical Research</div>
+        <div class="speaker-name">Michael Stumpf</div>
+        <div class="speaker-affil">University of Melbourne &amp; Cell Bauhaus</div>
+        <div class="speaker-desc">Inferring cell-specific gene regulatory networks from the dynamics and geometry of single-cell data</div>
+        <details class="speaker-abstract">
+          <summary>Read abstract</summary>
+          <div class="speaker-abstract-body">
+            <p>Gene expression dynamics in health and disease are governed by regulatory networks. These networks are far from static: interactions rewire across cell states, and this rewiring is central to development, differentiation, and disease progression. Yet most network inference methods produce a single population-averaged network, and existing cell-specific approaches yield only undirected edges, since directionality requires information about the underlying dynamics of the cell population.</p>
+            <p>I will show how we can overcome such limitations in an information-theoretic framework that combines estimated single-cell dynamics with the geometry of the cell-state manifold. This enables us to infer directed, cell-specific causal networks, without imposing pseudotemporal orderings or assumptions about trajectory topology. Our approach, available in a Julia package, locaTE models cellular dynamics as Markov processes on the manifold and uses localized transfer entropy, denoised via graph-Laplacian regularization, to recover sparse per-cell interaction networks. This allows us to capture state-dependent regulatory logic, including a class of higher-order interactions that are locally first order conditional on cellular context. I will discuss how dynamics-resolved, cell-specific networks open new avenues for understanding disease-relevant processes, from fate decisions in development to aberrant differentiation in cancer and blood disorders. I will also map out how and why we can combine this mechanistic approach with data-driven AI/ML methods.</p>
+          </div>
+        </details>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
       <div class="speaker-card">
         <div class="speaker-name">Lazar Atanackovic</div>
         <div class="speaker-affil">University of Alberta</div>
+        <div class="speaker-desc">Distribution-conditioned flows for learning cell dynamics</div>
         <span class="speaker-tag">Confirmed speaker</span>
       </div>
     </div>
